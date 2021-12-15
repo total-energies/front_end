@@ -1,0 +1,25 @@
+#heading{
+  color:#00BFA6;
+  font-weight: bold;
+  font-size: 45px;
+}
+#btnBackground{
+  background-color:#00BFA6;
+  color:#ffffff;
+  font-weight: bold;
+}
+
+#divPosition{
+  margin-top: 2%;
+}
+
+#divSize{
+  max-height:75vh;
+}
+
+#linkPassword{
+  font-size: 12px;
+  color:#0000FF;
+  font-weight: bold;
+}
+  
