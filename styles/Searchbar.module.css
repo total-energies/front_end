@@ -1,0 +1,73 @@
+#form {
+    position: absolute;
+    margin-left: 300px;
+    margin-top: 300px;
+    background-color: #F8F8F8;
+    
+}
+
+.parentForm {
+    display: flex;
+}
+
+.inputType {
+    border-radius: 10px;
+    width: 870px;
+    height: 50px;
+    cursor: pointer;
+    padding: 15px;
+    border: 1px solid black;
+    outline: none;
+    background-color: #FFFFFF;
+}
+
+/* .inputType > placeholder {
+    font-size: 10px;
+} */
+
+.searchButton {
+    margin-left: 30px;
+    
+}
+
+.addButton {
+    margin-left: 30px;
+     
+}
+
+.buttonType {
+    border-radius: 10px;
+    width: 120px;
+    height: 50px;
+    cursor: pointer;
+    padding: 15px;
+    outline: none;
+    color: white;
+    background-color: #00BFA6;
+    outline: none;
+    font-weight: 400;
+    border-bottom: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    
+}
+
+.buttonAdd {
+    border-radius: 10px;
+    width: 120px;
+    height: 50px;
+    cursor: pointer;
+    padding: 15px;
+    outline: none;
+    color: white;
+    background-color: #1F71F2;
+    outline: none;
+    font-weight: 400;
+    border-bottom: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+
+}
+
