@@ -1,0 +1,17 @@
+#paginationText{
+    color:#00BFA6;
+}
+
+#paginationText:hover{
+    background-color: #00BFA6;
+    color:#ffffff;
+}
+#activeText:hover{
+    background-color: #00BFA6;
+    color:#ffffff;
+}
+
+a > #activeText:active{
+    background-color: #00BFA6;
+    color:#ffffff;
+}

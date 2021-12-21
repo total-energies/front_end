@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FiLogOut } from "react-icons/fa";
+//import { FiLogOut } from "react-icons/fa";
 import styles from '../styles/Sidebar.module.css';
 import Image from "next/image";
 import avatar from '../public/avatar-gfa56b2cea_1280.png';

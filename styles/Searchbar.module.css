@@ -21,6 +21,17 @@
     background-color: #FFFFFF;
 }
 
+.saveButton{
+    background-color: #00BFA6;
+    color:#ffffff;
+    padding-top:10px;
+    padding-bottom:10px;
+    padding-left:20px;
+    padding-right:20px;
+    border:1px solid #00BFA6;
+    border-radius: 5px;
+}
+
 /* .inputType > placeholder {
     font-size: 10px;
 } */
@@ -71,3 +82,9 @@
 
 }
 
+#TableID{
+    margin-left: 2%;
+    background-color: #ffffff;
+    max-width: 115vh;
+    
+}
