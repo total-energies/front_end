@@ -16,14 +16,14 @@ export const login = () => {
       <main className="bg-light">
         <div className="container mt-5 bg-white w-50 p-5 mb-5 bg-body rounded" id={styles.divSize}>
           <div className="row">
-            <div className="col-sm-12 col-md-2">
+            <div className="col-sm-12 col-md-4">
             <Image
         src={logo}
         alt="TotalEngines logo"
       />
             </div>
-        <div className="col-sm-12 col-md-10 mt-5 ">
-          <h1 className="float-end" id={styles.heading}>Q & A ToolBox</h1>
+        <div className="col-sm-12 col-md-8 mt-5 ">
+          <h1 className="float-none" id={styles.heading}>Q & A ToolBox</h1>
         </div>
           </div>
           <div className="row mt-5" id={styles.divPosition}>
