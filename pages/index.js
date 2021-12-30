@@ -1,7 +1,6 @@
 import Dashboard from "../components/Dashboard";
 
 
-
 function HomePage() {
 
     return (
@@ -12,6 +11,7 @@ function HomePage() {
 
 
 }
+
 
 
 
