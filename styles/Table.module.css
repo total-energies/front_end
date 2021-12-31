@@ -1,4 +1,4 @@
-#paginationText{
+ #paginationText{
     color:#00BFA6;
 }
 
@@ -6,12 +6,12 @@
     background-color: #00BFA6;
     color:#ffffff;
 }
-#activeText:hover{
-    background-color: #00BFA6;
-    color:#ffffff;
-}
 
-a > #activeText:active{
+#paginationText:active{
     background-color: #00BFA6;
+}
+#activeText{
+    background-color: #00BFA6; 
     color:#ffffff;
+    border: 1px solid #00BFA6; 
 }

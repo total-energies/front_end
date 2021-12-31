@@ -5,7 +5,7 @@ import styles from '../styles/Searchbar.module.css';
  import Table from '../components/SearchTable';
 
 
-
+ 
 
 function Searchbar () {
 
@@ -14,17 +14,25 @@ function Searchbar () {
       setShow(!show);
     }
 
+    const [active, setActive] = useState(false);
+    function toggleActive(){
+      setActive(!active);
+    }
+
     const handleClick = (event) => {
         swal({
-            title: "Data",
-            text: "submitted successfully!",
+            title: "Data submitted successfully!",
+            text: "",
             icon: "success",
+            buttons: {
+              confirm: true,
+            },
           });
       };
 
 
     return (
-        <div>
+        <div className={styles.container}>
        <Form id={styles.form} role="search" >
         <div className={styles.parentForm}>
         <div>  
@@ -35,11 +43,11 @@ function Searchbar () {
         <button type="button"  className={styles.buttonType} onClick={toggle}>Search</button>
        </div>
 {/* Modal */}
-<div className="modal fade" id="exampleModal"  aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div  className="modal-dialog">
-    <div  className="modal-content">
+<div className="modal fade " id="exampleModal"  aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div  className="modal-dialog ">
+    <div  className="modal-content position-absolute top-50 start-50 translate-middle" id={styles.modalPosition}>
       <div  className="modal-header">
-        <h5 className="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 className="modal-title" id={styles.titleAlign}>Add Data</h5>
         <button type="button"  className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div  className="modal-body form-center">
@@ -70,6 +78,11 @@ function Searchbar () {
 </div>
        <div className={styles.addButton} >
         <button type="button" value="submit" className={styles.buttonAdd} data-bs-toggle="modal" data-bs-target="#exampleModal">Add Data</button>
+       </div>
+
+
+       <div className={styles.searchButton}>
+        <button type="button" name="exportBtn"  className={styles.buttonType} id={styles.exportButton} >Export</button>
        </div>
        </div>
 

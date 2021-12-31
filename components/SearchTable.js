@@ -3,10 +3,16 @@ import styles from '../styles/Table.module.css';
 
 function  SearchTable(){
 
+  
+   
+   function checkboxChange(e){
+
+   }
     return(
+      
     <div>
 
-<Table responsive="xl" className="p-2">
+<Table responsive="xl" className="p-2 mt-5">
         <tbody>
           <tr className="mt-2">
             <td> <input type="checkbox" className="form-check-input ms-1" id="exampleCheck1"/></td>
@@ -40,7 +46,7 @@ function  SearchTable(){
       <nav aria-label="Page navigation example">
   <ul className="pagination justify-content-center">
     <li className="page-item"><a className="page-link" id={styles.paginationText} href="#">Previous</a></li>
-    <li className="page-item"><a className="page-link" id={styles.activeText} href="#">1</a></li>
+    <li className="page-item active"><a className="page-link" id={styles.activeText} href="#">1 <span className="sr-only"></span> </a></li>
     <li className="page-item"><a className="page-link" id={styles.paginationText} href="#">2</a></li>
     <li className="page-item"><a className="page-link"  id={styles.paginationText} href="#">3</a></li>
     <li className="page-item"><a className="page-link" id={styles.paginationText} href="#">Next</a></li>
