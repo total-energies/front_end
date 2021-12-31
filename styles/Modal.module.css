@@ -1,0 +1,50 @@
+.modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content {
+  width: 400px;
+  background-color: white;
+  border-radius: 10px;
+
+}
+
+.header { 
+  padding: 10px;
+  
+
+}
+
+.title {
+  margin: 0;
+}
+
+.body {
+  padding: 10px;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  border-radius: 15px;
+}
+
+.themeButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 30px;
+}
+
+.footer { 
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  margin-left: 135px;
+
+}

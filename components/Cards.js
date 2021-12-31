@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import { Card, Container, Row, Col } from 'react-bootstrap';
 import styles from '../styles/Cards.module.css';
 import Image from "next/image";
@@ -5,11 +6,12 @@ import icon from '../public/categories.png';
 import plus from '../public/add.png';
 import pieChart from '../public/pie-chart.png';
 import barChart from '../public/bar-graph.png';
+import Modal from "../components/Modal";
+import Owners from '../components/OwnerModal';
 
 
 function Cards () {
-
-
+const [show, setShow] = useState(false);
     return (
         <Container id={styles.container} > 
         <Row>
@@ -31,12 +33,13 @@ function Cards () {
                 </div>
                 </div>
                 <div className={styles.plus}>
-                    <Image
+                    <Image onClick={() => setShow(true)}
                     src={plus}
                     alt='plus icon'
                     width={50}
                     height={50}
                     />
+                    <Modal title="Add Theme" onClose={() => setShow(false)} show={show}/>
                 </div>
              </div>
             </Card.Body>
@@ -51,7 +54,8 @@ function Cards () {
                 src={pieChart}
                 alt='category icon'
                 width={100}
-                height={100}/>
+                height={100}
+                />
                 </div>
                 <div className={styles.textOne}>
                 <h5 className={styles.themes}>Owners</h5>
@@ -60,13 +64,14 @@ function Cards () {
                 </div>
                 </div>
                 <div className={styles.plus}>
-                    <Image
+                    <Image onClick={() => setShow(true)}
                     src={plus}
                     alt='plus icon'
                     width={50}
                     height={50}
                     />
                 </div>
+                <Owners title="Add Owner" onClose={() => setShow(false)} show={show}/>
              </div>
             </Card.Body>
             </Card>
