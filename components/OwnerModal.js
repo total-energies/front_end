@@ -9,17 +9,12 @@ function Owners (props) {
     if (!props.show) {
         return null;
       }
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    alert(`Your Data was Submitted Succefully`);
-  }
-
       return (
         <div onClick={props.onClose} className={styles.modal}>
           <div onClick={(e) => e.stopPropagation()} className={styles.content}>
             <div className={styles.header}>
-              <h4 className={styles.title}>{props.title}</h4>
+              <h4 className={styles.title}>{props.title}
+              </h4>
             </div>
             <div className={styles.body}>
               <Form>
@@ -33,7 +28,7 @@ function Owners (props) {
     
             </div>
            <div className={styles.footer}>
-             <Button type="submit" value="submit" onClick={(event)=>handleSubmit(event)} className="justify-content-between">Add Owner</Button>
+             <Button type="submit" value="submit" className="justify-content-between">Add Owner</Button>
            </div> 
           </div>
     
