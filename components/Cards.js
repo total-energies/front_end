@@ -71,7 +71,7 @@ const [show, setShow] = useState(false);
                     height={50}
                     />
                 </div>
-                <Owners title="Add Owner" onClose={() => setShow(false)} show={show}/>
+                <Owners title="Add Owner" onClose={() => setShow(false)} show={show}/> 
              </div>
             </Card.Body>
             </Card>
