@@ -9,14 +9,15 @@ import styles from '../styles/Searchbar.module.css';
 
 function Searchbar () {
 
+
+
     const [show, setShow] = useState(false);
     function toggle(){
       setShow(!show);
     }
 
-    const [active, setActive] = useState(false);
-    function toggleActive(){
-      setActive(!active);
+    function toggleButton(){
+      setShow(!show);
     }
 
     const handleClick = (event) => {
