@@ -7,7 +7,7 @@ import plus from '../public/add.png';
 import pieChart from '../public/pie-chart.png';
 import barChart from '../public/bar-graph.png';
 import Modal from "../components/Modal";
-import Owners from '../components/OwnerModal';
+//import Owners from '../components/OwnerModal';
 
 
 function Cards () {
@@ -39,7 +39,7 @@ const [show, setShow] = useState(false);
                     width={50}
                     height={50}
                     />
-                    <Modal title="Add Theme" onClose={() => setShow(false)} show={show}/>
+                    {/* <Modal title="Add Theme" onClose={() => setShow(false)} show={show}/> */}
                 </div>
              </div>
             </Card.Body>
@@ -71,7 +71,7 @@ const [show, setShow] = useState(false);
                     height={50}
                     />
                 </div>
-                <Owners title="Add Owner" onClose={() => setShow(false)} show={show}/>
+                {/* <Owners title="Add Owner" onClose={() => setShow(false)} show={show}/> */}
              </div>
             </Card.Body>
             </Card>
