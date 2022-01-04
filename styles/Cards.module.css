@@ -65,3 +65,14 @@
     margin-top: 60px;
     cursor: pointer;
 }
+
+.saveButton{
+    background-color: #00BFA6;
+    color:#ffffff;
+    padding-top:10px;
+    padding-bottom:10px;
+    padding-left:10px;
+    padding-right:10px;
+    border:1px solid #00BFA6;
+    border-radius: 5px;
+}

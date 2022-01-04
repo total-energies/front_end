@@ -33,17 +33,9 @@ function Searchbar () {
 
 
     return (
-        <div className={styles.container}>
-       <Form id={styles.form} role="search" >
-        <div className={styles.parentForm}>
-        <div>  
-       <input type='search' id={styles.query} name="" className={styles.inputType} placeholder="Enter a Question">
-       </input>
-       </div>
-       <div className={styles.searchButton}>
-        <button type="button"  className={styles.buttonType} onClick={toggle}>Search</button>
-       </div>
-{/* Modal */}
+
+      <>
+      {/* Modal */}
 <div className="modal fade " id="exampleModal"  aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div  className="modal-dialog ">
     <div  className="modal-content position-absolute top-50 start-50 translate-middle" id={styles.modalPosition}>
@@ -53,15 +45,15 @@ function Searchbar () {
       </div>
       <div  className="modal-body form-center">
       <form>
-      <select className="form-select mt-3" aria-label="Default select example">
-  <option selected>Theme</option>
+      <select defaultValue={'DEFAULT'} className="form-select mt-3" aria-label="Default select example">
+  <option value="DEFAULT">Theme</option>
   <option value="1">One</option>
   <option value="2">Two</option>
   <option value="3">Three</option>
 </select>
 
-<select className="form-select mt-3" aria-label="Default select example">
-  <option selected>Sub Theme</option>
+<select defaultValue={'DEFAULT'} className="form-select mt-3" aria-label="Default select example">
+  <option value="DEFAULT">Sub Theme</option>
   <option value="1">One</option>
   <option value="2">Two</option>
   <option value="3">Three</option>
@@ -77,11 +69,21 @@ function Searchbar () {
     </div>
   </div>
 </div>
+        <div className={styles.container}>
+       <Form id={styles.form} role="search" >
+        <div className={styles.parentForm}>
+        <div>  
+       <input type='search' id={styles.query} name="" className={styles.inputType} placeholder="Enter a Question">
+       </input>
+       </div>
+       <div className={styles.searchButton}>
+        <button type="button"  className={styles.buttonType} onClick={toggle}>Search</button>
+       </div>
+
        <div className={styles.addButton} >
         <button type="button" value="submit" className={styles.buttonAdd} data-bs-toggle="modal" data-bs-target="#exampleModal">Add Data</button>
        </div>
-
-
+       
        <div className={styles.searchButton}>
         <button type="button" name="exportBtn"  className={styles.buttonType} id={styles.exportButton} >Export</button>
        </div>
@@ -90,22 +92,19 @@ function Searchbar () {
        <div className="table mt-5" id={styles.TableID}  style={{
         display: show?"block":"none"
       }}>
+
+
+
       <Table/>
       </div>
        </Form>
      
        </div>
        
-       
+       </>
     );
 
 }
-
-
-
-
-
-
 
 
 export default Searchbar

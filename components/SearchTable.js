@@ -3,11 +3,6 @@ import styles from '../styles/Table.module.css';
 
 function  SearchTable(){
 
-  
-   
-   function checkboxChange(e){
-
-   }
     return(
       
     <div>

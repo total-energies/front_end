@@ -1,7 +1,13 @@
 import Dashboard from "../components/Dashboard";
 
 
-function HomePage() {
+
+export default function HomePage() {
+
+//     const [mounted, setMounted] = useState(false);
+//   useEffect(() => {
+//       setMounted(true)
+//   }, [])
 
     return (
         <div>
@@ -12,7 +18,17 @@ function HomePage() {
 
 }
 
+export  function handler(req, res) {
+    if (req.method === 'POST') {
+      const owner=req.body.owner;
+      const newOwner={
+          id:Date.now,
+          text:owner
+      }
+
+      owner.push(newOwner);
+      res.status(201).json(newOwner)
+    }
+  }
 
 
-
-export default HomePage
