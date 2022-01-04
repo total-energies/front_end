@@ -11,21 +11,36 @@ import axios from "axios";
 function Searchbar () {
     const [show, setShow] = useState(false);
     const [APIData, setAPIData] = useState([]);
-
-
-
-
-
-
-
+    const [filteredResults, setFilteredResults] = useState([]);
+    const [searchInput, setsearchInput] = useState('');
 
 
     useEffect(() => {
-      axios.get()
+      axios.get(``)
       .then((response) => {
+        console.log(response);
         setAPIData(response.data);
+        
       })
     }, [])
+
+
+    const searchItems = (searchValue) => {
+      setsearchInput(searchValue)
+      if(searchInput !== ''){
+        const filteredData = APIData.filter((item) => {
+          return Object.values(item).join('').toLowerCase().includes(searchInput.toLowerCase())
+        })
+        setFilteredResults(filteredData);
+      }
+      else {
+        setFilteredResults(APIData)
+      }
+    }
+
+
+
+
 
     function toggle(){
       setShow(!show);
@@ -88,7 +103,7 @@ function Searchbar () {
        <Form id={styles.form} role="search" >
         <div className={styles.parentForm}>
         <div>  
-       <input type='search' id={styles.query} name="" className={styles.inputType} placeholder="Enter a Question">
+       <input type='search' id={styles.query} name="" className={styles.inputType} placeholder="Enter a Question" onChange={(e) => searchItems(e.target.value)}>
        </input>
        </div>
        <div className={styles.searchButton}>
