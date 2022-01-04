@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Form } from "react-bootstrap";
 import styles from '../styles/Searchbar.module.css';
+import axios from "axios";
 
  import Table from '../components/SearchTable';
 
@@ -8,10 +9,24 @@ import styles from '../styles/Searchbar.module.css';
  
 
 function Searchbar () {
-
-
-
     const [show, setShow] = useState(false);
+    const [APIData, setAPIData] = useState([]);
+
+
+
+
+
+
+
+
+
+    useEffect(() => {
+      axios.get()
+      .then((response) => {
+        setAPIData(response.data);
+      })
+    }, [])
+
     function toggle(){
       setShow(!show);
     }
@@ -30,7 +45,7 @@ function Searchbar () {
             },
           });
       };
-
+     
 
     return (
 
