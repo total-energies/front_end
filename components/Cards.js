@@ -8,9 +8,11 @@ import pieChart from '../public/pie-chart.png';
 import barChart from '../public/bar-graph.png';
 import Modal from "../components/Modal";
 import Owners from '../components/OwnerModal';
+import ThemeModal from "./ThemeModal";
+import OwnerModal from "./OwnerModal";
 
 
-function Cards () {
+function Cards (props) {
 const [show, setShow] = useState(false);
     return (
         <Container id={styles.container} > 
@@ -39,7 +41,9 @@ const [show, setShow] = useState(false);
                     width={50}
                     height={50}
                     />
-                    <Modal title="Add Theme" onClose={() => setShow(false)} show={show}/>
+                    <Modal close={() => setShow(false)} >
+                        <ThemeModal show={show}/>
+                    </Modal>
                 </div>
              </div>
             </Card.Body>
@@ -71,7 +75,7 @@ const [show, setShow] = useState(false);
                     height={50}
                     />
                 </div>
-                <Owners title="Add Owner" onClose={() => setShow(false)} show={show}/>
+                {/* <Owners title="Add Owner" onClose={() => setShow(false)} show={show}/> */}
              </div>
             </Card.Body>
             </Card>

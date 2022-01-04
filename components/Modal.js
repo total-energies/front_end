@@ -1,40 +1,37 @@
-import { React } from 'react';
-import {  Button, Form } from 'react-bootstrap';
-import styles from "../styles/Modal.module.css";
-
-
-
 const Modal = (props) => {
-  if (!props.show) {
-    return null;
-  }
   return (
-    <div onClick={props.onClose} className={styles.modal}>
-      <div onClick={(e) => e.stopPropagation()} className={styles.content}>
-        <div className={styles.header}>
-          <h4 className={styles.title}>{props.title}</h4>
-        </div>
-        <div className={styles.body}>
-          <Form>
-          <Form.Group >
-              <Form.Control type="name" placeholder="Theme" />
-            </Form.Group> <br></br>
-            <Form.Group >
-              <Form.Control type="email" placeholder="Sub-Theme" />
-            </Form.Group>
-          </Form>
+    <div className='nav-container'>
+      <div className='modal-background' onClick={() => props.close()}></div>
 
-        </div>
-       <div className={styles.footer}>
-         <Button type="submit" value="submit"  className="justify-content-between">Add Theme</Button>
-       </div> 
-      </div>
+      <div className='modal'>{props.children}</div>
+      <style jsx global>{`
+      .modal-background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100;
+        height: 100;
+        background: rgba(0, 0, 0, 0.3);
+      }
 
+      .moal {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: calc(100vw - 4em);
+        max-width: 32em;
+        max-height: calc(100vh - 4em);
+        overflow: auto;
+        transform: translate(-50%, -50%);
+        padding: 1em;
+        border-radius: 0.2em;
+        background: white;
+      }
+      `}
+      </style>
     </div>
   );
 }
-
-
 
 
 
