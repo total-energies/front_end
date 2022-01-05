@@ -14,9 +14,9 @@ function Searchbar () {
     const [filteredResults, setFilteredResults] = useState([]);
     const [searchInput, setsearchInput] = useState('');
 
-
+  const url = '';
     useEffect(() => {
-      axios.get(``)
+      axios.get(url)
       .then((response) => {
         console.log(response);
         setAPIData(response.data);
