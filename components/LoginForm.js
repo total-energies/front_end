@@ -34,13 +34,26 @@ export default function LoginForm() {
                 buttons: {
                   confirm: true,
                 },
-              });
-            router.push({ pathname: '/'});
+              }).then(okay => {
+                if (okay) {
+                // window.location.href = "URL";
+                router.push({ pathname: '/dashboard'});
+               }
+             });
+            //router.push({ pathname: '/'});
             //return <Redirect to={{ pathname: '/'}}></Redirect>
         } 
          else {
         //     //bad combination
-           alert('wrong email or password combination');
+           //alert('wrong email or password combination');
+           swal({
+            title: " Incorrect Credentials!",
+            text: "Wrong Username or Password entered ",
+            icon: "error",
+            buttons: {
+              confirm: true,
+            },
+          });
          }
     }
     
