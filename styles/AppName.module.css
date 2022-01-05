@@ -1,0 +1,11 @@
+.divposition {
+    position: absolute;
+    left: 750px;
+    top: 35px;
+}
+
+.heading {
+    color:#00BFA6;
+    font-weight: bold;
+    font-size: 45px;
+}
