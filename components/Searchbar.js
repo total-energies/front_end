@@ -92,9 +92,6 @@ function Searchbar () {
        <div className="table mt-5" id={styles.TableID}  style={{
         display: show?"block":"none"
       }}>
-
-
-
       <Table/>
       </div>
        </Form>
