@@ -1,8 +1,49 @@
 import { Formik, Field, Form } from 'formik';
-import Link  from 'next/link';
+import router  from 'next/router';
 import styles from '../styles/Login.module.css'
+import { useState} from "react";
+ import {  Redirect} from "react-router-dom";
 
 export default function LoginForm() {
+
+    const [usernameInput, setUsernameInput] = useState('');
+    const [passwordInput, setPasswordInput] = useState('');
+
+    //let history = useHistory();
+    const handleUsernameChange = (e) => {
+         setUsernameInput(e.target.value);
+    }
+    const handlePasswordChange = (e) => {
+        setPasswordInput(e.target.value);
+    }
+
+    const handleLoginSubmit = (e) => {
+     e.preventDefault();
+        let hardcodedCred = {
+            username: 'Admin',
+            password: 'Admin'
+        }
+       
+         
+        if (usernameInput == hardcodedCred.username && passwordInput == hardcodedCred.password) {
+            //alert('correct username and password combination');
+            swal({
+                title: `${usernameInput}  successfully Logged In!`,
+                text: "",
+                icon: "success",
+                buttons: {
+                  confirm: true,
+                },
+              });
+            router.push({ pathname: '/'});
+            //return <Redirect to={{ pathname: '/'}}></Redirect>
+        } 
+         else {
+        //     //bad combination
+           alert('wrong email or password combination');
+         }
+    }
+    
     return (
   <div>
             <Formik
@@ -15,11 +56,11 @@ export default function LoginForm() {
 
             }}
         >
-            <Form className="mt-5"> 
-                <Field className="form-control" id="username" name="username" placeholder="Username" />
-                <Field className="form-control mt-4" type="password" id="password" name="password" placeholder="Password" />
-                <button className="w-100 btn mt-5" id={styles.btnBackground} type="button"><Link href="/" id={styles.linkBtn}><a>Login</a></Link></button>
-                <Link href="" className="link-primary mt-2" id={styles.linkPassword}>Forgot Password</Link>
+            <Form className="mt-5" autoComplete="off" onSubmit={handleLoginSubmit} > 
+                <Field className="form-control" id="username" name="username" placeholder="Username" onChange={handleUsernameChange}  value={usernameInput}  />
+                <Field className="form-control mt-4" type="password" id="password" name="password" placeholder="Password" onChange={handlePasswordChange} value={passwordInput}/>
+                <button className="w-100 btn mt-5" id={styles.btnBackground} type="submit">Login</button>
+                <a href="#" className="link-primary mt-2" id={styles.linkPassword}>Forgot Password</a>
             </Form>
         </Formik>
   </div>

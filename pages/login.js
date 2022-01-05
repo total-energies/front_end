@@ -9,11 +9,11 @@ import styles from '../styles/Login.module.css'
 
 export const login = () => {
     return (
-        <div >
+        <div id={styles.bgColor}>
         <Head>
         <title>Login Page</title>
       </Head>
-      <main className="bg-light">
+      <main id={styles.mainSize} >
         <div className="container mt-5 bg-white w-50 p-5 mb-5 bg-body rounded" id={styles.divSize}>
           <div className="row">
             <div className="col-sm-12 col-md-2">
@@ -23,7 +23,7 @@ export const login = () => {
       />
             </div>
         <div className="col-sm-12 col-md-10 mt-5 ">
-          <h1 className="float-end" id={styles.heading}>Q & A ToolBox</h1>
+          <h1 className="float-start" id={styles.heading}>Q & A ToolBox</h1>
         </div>
           </div>
           <div className="row mt-5" id={styles.divPosition}>
@@ -44,7 +44,24 @@ export const login = () => {
         </div>
 
       </main>
+
+<style jsx>{`
+    html, body
+     {
+      background-color: #f8f8f8;
+     }
+
+     .container,col-sm-12 {
+
+      background-color: #f8f8f8;
+     }
+      
+      `}
+     
+</style>
         </div>
+
+       
     )
 }
 

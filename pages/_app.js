@@ -1,12 +1,6 @@
 import '../styles/globals.css'
 import 'bootstrap/dist/css/bootstrap.css'
 //import styles from '../styles/Login.modules.css'
-
-
-
-import '../styles/globals.css';
-import "bootstrap/dist/css/bootstrap.css";
-//import "bootstrap/dist/js/bootstrap.min.js";
  import { useEffect } from "react";
  import swal from 'sweetalert';
 
