@@ -77,16 +77,16 @@ function Searchbar () {
       <form>
       <select defaultValue={'DEFAULT'} className="form-select mt-3" aria-label="Default select example">
   <option value="DEFAULT">Theme</option>
-  <option value="1">One</option>
-  <option value="2">Two</option>
-  <option value="3">Three</option>
+  <option value="1">Environment</option>
+  <option value="2">Financing</option>
+  <option value="3">Security</option>
 </select>
 
 <select defaultValue={'DEFAULT'} className="form-select mt-3" aria-label="Default select example">
   <option value="DEFAULT">Sub Theme</option>
-  <option value="1">One</option>
-  <option value="2">Two</option>
-  <option value="3">Three</option>
+  <option value="1">Climate</option>
+  <option value="2">Oil Spill</option>
+  <option value="3">ESIA</option>
 </select>
 
 <input type="email" className="form-control mt-3" id="exampleFormControlInput1" placeholder="Owner"></input>
