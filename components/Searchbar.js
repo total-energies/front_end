@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { Form } from "react-bootstrap";
 import styles from '../styles/Searchbar.module.css';
 import { Table } from "react-bootstrap";
+import ReactPaginate from 'react-paginate';
 import axios from "axios";
 import Pdf from "react-to-pdf";
 
@@ -166,9 +167,23 @@ function Searchbar () {
       </Table>
 
      
+       
+       <div className="w-100">
+      <nav aria-label="Page navigation example">
+      <ul className="pagination justify-content-center">
+      <li className="page-item"><a className="page-link" id={styles.paginationText} href="#">Previous</a></li>
+      <li className="page-item active"><a className="page-link" id={styles.activeText} href="#">1 <span className="sr-only"></span> </a></li>
+      <li className="page-item"><a className="page-link" id={styles.paginationText} href="#">2</a></li>
+      <li className="page-item"><a className="page-link"  id={styles.paginationText} href="#">3</a></li>
+      <li className="page-item"><a className="page-link" id={styles.paginationText} href="#">Next</a></li>
+      </ul>
+      </nav>
+      </div>
+
+
+     
         {/* <Table data={searchResults} /> */}
     
-
       
       </div>
        </Form>
