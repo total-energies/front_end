@@ -1,7 +1,8 @@
+import axios  from 'axios';
 import React, { useState,useEffect } from 'react';
-import { Card, Container, Row, Col } from 'react-bootstrap';
 import styles from '../styles/Cards.module.css';
 import Image from "next/image";
+import Logo from "../components/Logo";
 import icon from '../public/categories.png';
 import plus from '../public/add.png';
 import pieChart from '../public/pie-chart.png';
@@ -9,35 +10,35 @@ import barChart from '../public/bar-graph.png';
 //import Modal from "../components/Modal";
 //import Owners from '../components/OwnerModal';
 
+const baseUrl='https://te-searchengine.herokuapp.com/api/v1/owners/';
 
 export default function Cards  () {
+
 const [show, setShow] = useState(false);
-const [owner,setOwner]= useState('');
+const [owner,setState]= useState('');
+const [post,setPost]= useState('');
 
-const submitOwner = async event => {
- // event.preventDefault()
 
-  const res = await fetch(
-    'https://te-searchengine.herokuapp.com/api/v1/owners/',
-    {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      method: 'POST',
-      body: JSON.stringify({
-       owner
-      }),
-    }
-  )
 
-  const result = await res.json();
-  // result.user => 'Ada Lovelace'
-  console.log(result);
+
+const state={
+  owner:''
+};
+
+const handleChange=event=>{
+  setState({ [event.target.name] :event.target.value});
 }
-    return (
-<>
 
-    {/* Owner Modal */}
+
+
+
+
+    return(
+
+        
+        <>
+        {/*-----modals----  */}
+             {/* Owner Modal */}
     <div className="modal fade " id="ModalOwner"  aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div  className="modal-dialog ">
     <div  className="modal-content" id={styles.modalPosition}>
@@ -46,8 +47,8 @@ const submitOwner = async event => {
         <button type="button"  className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div  className="modal-body form-center">
-      <form onSubmit={submitOwner}>
-        <input type="text" className="form-control mt-3" value="owner" name="owner" id="exampleFormControlInput1" placeholder="Owner" onChange={(event)=>setOwner(event.target.value)}></input>
+      <form >
+        <input type="text" className="form-control mt-3"  name="owner" id="exampleFormControlInput1" placeholder="Owner" onChange={handleChange}></input>
         
       </form>
       </div>
@@ -79,107 +80,110 @@ const submitOwner = async event => {
     </div>
   </div>
 </div>
+{/*-----modals----  */}
 
 
-        <Container id={styles.container} > 
-        <Row>
-          <Col>
-
-     
-
-          <Card className={styles.cardOne}>
-            <Card.Body>
-            <div className={styles.containerIconz}>
-            <div className={icon}>
-
-                <Image 
-                src={icon}
-                alt='category icon'
-                width={100}
-                height={100}/>
-                </div>
-                <div className={styles.textOne}>
-                <h5 className={styles.themes}>Themes</h5>
-                <div className={styles.number}>
-                    45
-                </div>
-                </div>
-                <div className={styles.plus}>
-                    <Image onClick={() => setShow(true)}
-                    src={plus}
-                    alt='plus icon'
-                    width={50}
-                    height={50}
-                    data-bs-toggle="modal" data-bs-target="#ModalTheme"
-                    />
-                    {/* <Modal title="Add Theme" onClose={() => setShow(false)} show={show}/> */}
-                </div>
+        <div className='container p-5 mt-5'>
+             {/* <div className='row p-3'>
+             <div className='col-md-12'>
+             <Logo className="float-end"/>
              </div>
-            </Card.Body>
-            </Card>
-            </Col>
-          <Col>
+             </div> */}
+            <div className='row p-4 d-inline-flex p-2 bd-highlight me-5' id={styles.cardContainer}>
+                <div className='col-md-4 mt-3'>
+                <div className="card rounded-3 bg-primary" id={styles.cardOne}>
+                    <div className="card-body" id={styles.containerIconz}>
+                        
+  
+                                <Image 
+                            src={icon}
+                            alt='category icon'
+                            id={styles.icons}
+                             width={100}
+                             height={100}
+                            />
+                        
+                        <div className="ms-3">
+                        <h5 className="card-text text-white mt-2">Themes</h5>
+                        <h1 className='text-white'>45</h1>
+                        </div >
+                      
+                      
+                         <button className="btn btn-default align-bottom">
+                         <Image onClick={() => setShow(true)}
+                            src={plus}
+                            alt='plus icon'
 
-        
-          <Card className={styles.cardTwo}>
-            <Card.Body>
-            <div className={styles.containerIconz}>
-            <div className={icon}>
-                <Image 
-                src={pieChart}
-                alt='category icon'
-                width={100}
-                height={100}
-                />
-                </div>
-                <div className={styles.textOne}>
-                <h5 className={styles.themes}>Owners</h5>
-                <div className={styles.number}>
-                    85
+                            id={styles.iconsPlus}
+                             width={50}
+                            height={50}
+                            data-bs-toggle="modal" data-bs-target="#ModalTheme"
+                            />
+                         </button>
+                        
+                            
+                    </div>
                 </div>
                 </div>
-                <div className={styles.plus}>
-                    <Image onClick={() => setShow(true)}
-                    src={plus}
-                    alt='plus icon'
-                    width={50}
-                    height={50}
-                    data-bs-toggle="modal" data-bs-target="#ModalOwner"
-                    />
+
+                <div className='col-md-4 mt-3'>
+                <div className="card rounded-3" id={styles.cardTwo}>
+                    <div className="card-body" id={styles.containerIconz}>
+                      
+                                    <Image 
+                            src={pieChart}
+                            id={styles.icons}
+                            alt='category icon'
+                             width={100}
+                             height={100}
+                            />
+                       
+                        <div className="ms-3">
+                        <h5 className="card-text text-white mt-2">Owners</h5>
+                        <h1 className='text-white'>45</h1>
+                        </div>
+                       
+                         <button className="btn btn-default align-bottom">
+                         <Image onClick={() => setShow(true)}
+                            src={plus}
+                            alt='plus icon'
+                            width={50}
+                            height={50}
+                            data-bs-toggle="modal" data-bs-target="#ModalOwner"
+                            />
+                         </button>
+                       
+                           
+                    </div>
                 </div>
-                {/* <Owners title="Add Owner" onClose={() => setShow(false)} show={show}/>  */}
-             </div>
-            </Card.Body>
-            </Card>
-            </Col>
-          <Col>
-          <Card className={styles.cardThree}>
-            <Card.Body>
-            <div className={styles.containerIconz}>
-            <div className={icon}>
-                <Image 
-                src={barChart}
-                alt='category icon'
-                width={100}
-                height={100}/>
                 </div>
-                <div className={styles.textOne}>
-                <h5 className={styles.themes}>Answers</h5>
-                <div className={styles.number}>
-                    1450
+                <div className='col-md-4 mt-3'>
+
+                <div className="card rounded-3" id={styles.cardThree}>
+                    <div className="card-body" id={styles.containerIconz}>
+                     
+                       
+                                    <Image 
+                            src={barChart}
+                            alt='category icon'
+                            id={styles.icons}
+                             width={100}
+                             height={100}
+                            />
+                      
+                        <div className='ms-3'>
+                        <h5 className="card-text text-white mt-2">Answers</h5>
+                        <h1 className='text-white'>45</h1>
+                        </div>
+                            
+                    </div>
                 </div>
-                </div>
-             </div>
-            </Card.Body>
-            </Card>
-            </Col>
-        </Row>
-      </Container>
-      </>
-    );
+
+                 </div>
+            </div>
+
+        </div>
+         </>
+    )
 
 }
-
-
-
-// export default Cards

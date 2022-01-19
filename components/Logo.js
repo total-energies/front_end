@@ -7,7 +7,7 @@ import logo from '../public/totalenergies.png';
 function Logo () {
 
     return(
-        <div className={styles.logoMain}>
+        <div className="position-absolute top-0 end-0">
             <Image className={styles.imgLogo}
             src={logo}
             alt="Logo image"

@@ -1,21 +1,10 @@
-#form {
-    position: absolute;
-    margin-left: 300px;
-    margin-top: 300px;
-    background-color: #F8F8F8;
-    max-width:80%;
-    padding-top: 20px;
-    padding-right: 20px;
-    padding-left: 20px;
 
-    
+
+#parentForm {
+     display: flex; 
 }
 
-.parentForm {
-    display: flex;
-}
-
-.inputType {
+#inputType {
     border-radius: 10px;
     width: 870px;
     height: 50px;
@@ -25,35 +14,45 @@
     outline: none;
     background-color: #FFFFFF;
 }
-
 .saveButton{
     background-color: #00BFA6;
     color:#ffffff;
-    padding-top:10px;
+     padding-top:10px;
     padding-bottom:10px;
     padding-left:10px;
     padding-right:10px;
     border:1px solid #00BFA6;
-    border-radius: 5px;
+    border-radius: 5px; 
+}
+
+#searchButton{
+    background-color: #00BFA6;
+    color:#ffffff;
+    /* padding-top:10px;
+    padding-bottom:10px;
+    padding-left:10px;
+    padding-right:10px;
+    border:1px solid #00BFA6;
+    border-radius: 5px; */
 }
 
 /* .inputType > placeholder {
     font-size: 10px;
 } */
 
-.searchButton {
-    margin-left: 30px;
+#searchButton {
+    margin-left: 0px;
     
 }
 
-.addButton {
-    margin-left: 30px;
+#addButton {
+    margin-left: 0px;
      
 }
 
 .buttonType {
     border-radius: 10px;
-    width: 120px;
+    width: 100px;
     height: 50px;
     cursor: pointer;
     padding: 10px;
@@ -71,7 +70,7 @@
 
 .buttonAdd {
     border-radius: 10px;
-    width: 120px;
+    width: 100px;
     height: 50px;
     cursor: pointer;
     padding: 10px;
@@ -91,6 +90,7 @@
     margin-left: 0%;
     background-color: #ffffff;
     max-width: 140vh;
+    margin-top: 5%;
     
 }
 
@@ -114,3 +114,43 @@
 /* .container{
     padding:20px;
 } */
+
+#ColPosition{
+    margin-top: 30%;
+}
+
+#searchBar{
+    background-color:#f8f8f8;
+    max-width:1120px;
+    margin-left: 1%;
+    
+}
+
+@media (min-width : 768px) and (max-width : 1024px){
+    #searchBar{
+        background-color:#f8f8f8;
+        margin-left: 9%;
+        max-width:800px;
+        
+    }
+}
+
+@media (min-width: 1030px) and (max-width: 1366px){
+    #searchBar{
+        background-color:#f8f8f8;
+        margin-left: 8%;
+        max-width:850px;
+        
+    }
+}
+
+@media  (min-width: 1370px) and (max-width: 1605px) {
+    #searchBar{
+        background-color:#f8f8f8;
+        margin-left: 8%;
+        max-width:935px;
+        
+    }
+}
+
+ 

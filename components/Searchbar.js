@@ -99,35 +99,42 @@ function Searchbar () {
     </div>
   </div>
 </div>
-        <div className={styles.container}>
-       <Form id={styles.form} role="search" >
-        <div className={styles.parentForm}>
-        <div>  
-       <input type='search' id={styles.query} name="" className={styles.inputType} placeholder="Enter a Question" onChange={(e) => searchItems(e.target.value)}>
-       </input>
-       </div>
-       <div className={styles.searchButton}>
-        <button type="button"  className={styles.buttonType} onClick={toggle}>Search</button>
-       </div>
 
-       <div className={styles.addButton} >
-        <button type="button" value="submit" className={styles.buttonAdd} data-bs-toggle="modal" data-bs-target="#exampleModal">Add Data</button>
-       </div>
-       
-       <div className={styles.searchButton}>
-        <button type="button" name="exportBtn"  className={styles.buttonType} id={styles.exportButton} >Export</button>
-       </div>
-       </div>
 
-       <div className="table mt-5" id={styles.TableID}  style={{
+        <div className="container" >
+       <div className="row" id={styles.searchBar}>
+          <div className="col-sm-12 col-md-8 col-lg-8 p-3"  >
+            <input
+              type="text"
+              name="search"
+              id={styles.searchInput}
+              className="form-control w-80 p-2"
+              placeholder="Enter a Question"
+              onChange={(e) => searchItems(e.target.value)}
+            />
+          </div>
+          <div className="col-sm-12 col-md-4 col-lg-4 pt-3 ">
+            <button type="button" className="btn  pt-2 me-2" id={styles.searchButton} onClick={toggle}>search</button>
+            <button type="button" className="btn btn-primary pt-2  me-2"
+             data-bs-toggle="modal" data-bs-target="#exampleModal"
+            >Add</button>
+            <button type="button" className="btn btn-danger pt-2 ">Export</button>
+          </div>
+          </div>
+
+           <div className="row">
+           <div className="col-sm-12 col-md-12 col-lg-12 pt-3 " style={{
         display: show?"block":"none"
       }}>
-      <Table/>
-      </div>
-       </Form>
-     
+           <Table/>
+           </div>
+          </div>
+          
+
+
        </div>
-       
+     
+      
        </>
     );
 

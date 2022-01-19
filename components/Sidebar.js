@@ -7,10 +7,6 @@ import logOut from '../public/logout.png';
 import Swal from 'sweetalert2';
 
 
-
-
-
-
 function Sidebar()  {
 
     const handleLogOut = (e) => {
@@ -38,24 +34,21 @@ function Sidebar()  {
     }
 
     return(
-
-        <div className={styles.wrapper}>
-
-            <div className={styles.sider}>
-
-                <div className={styles.profile}>
-                    <Image className={styles.img}
+        <div className="sidebar" id={styles.sidebar}  >
+        <div id="logo" className={styles.profile}>
+        <Image className={styles.img}
                     src={avatar}
                     alt="profile picture"
                     width={100}
                     height={100}
                     />
-                    <h3 className={styles.profileText}>Admin</h3>
-                    <p className={styles.profileRole}>Administrator</p>
-                </div>
+          {/* <img className="logo" /> */}
+        </div>
+        <h3 className={styles.profileText} id={styles.textAlign}>Admin</h3>
+        <p className={styles.profileRole} id={styles.textAlign}>Administrator</p>
 
-                <div className={styles.signOut}>
-                <button type="submit"   className={styles.type}>
+       
+                <button type="submit"   className="btn btn-danger position-absolute bottom-0 start-50 translate-middle-x rounded pe-4 ps-4">
                 <Image className={styles.logOutImg}
                 src={logOut}
                 alt="Logout icon"
@@ -65,11 +58,8 @@ function Sidebar()  {
                 />
                 </button>
 
-                </div>
-
-            </div>
-
-        </div>
+              
+      </div>
     );
 
 }

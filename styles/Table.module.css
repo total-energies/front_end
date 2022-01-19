@@ -15,3 +15,35 @@
     color:#ffffff;
     border: 1px solid #00BFA6; 
 }
+
+#tableSize{
+    max-width: 100%;
+    margin-left: 1%;
+
+}
+
+@media (min-width : 768px) and (max-width : 1024px){
+
+    #tableSize{
+        max-width: 80%;
+        margin-left: 10%;
+    
+    }
+
+}
+
+@media (min-width: 1030px) and (max-width: 1366px){
+    #tableSize{
+        max-width: 85%;
+        margin-left: 10%;
+    
+    }
+}
+
+@media  (min-width: 1370px) and (max-width: 1605px) {
+    #tableSize{
+        max-width: 80%;
+        margin-left: 10%;
+    
+    }
+}
