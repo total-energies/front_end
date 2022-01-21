@@ -3,11 +3,11 @@ import { Form } from "react-bootstrap";
 import styles from '../styles/Searchbar.module.css';
 import { Table } from "react-bootstrap";
 import axios from "axios";
-import Pdf from "react-to-pdf";
+//import Pdf from "react-to-pdf";
 
  //import Table from '../components/SearchTable';
 
-const ref = React.createRef();
+
 
 
 function Searchbar () {
@@ -23,6 +23,7 @@ function Searchbar () {
     let {name, value} = event.target
     setFormInputs({...formInput, [name]: value});
     setSearchTerm(event.target.value);
+    console.log(setSearchTerm)
   }
 
   const handleEnterKey =(event) => {
@@ -35,7 +36,7 @@ function Searchbar () {
 
   const search = async (event) => {
     event.preventDefault();
-    let data = await fetch('', {
+    let data = await axios.get('https://te-searchengine.herokuapp.com/api/v1/answers/search?search=tilenga', {
       headers: {
         'Content-type': 'application/json',
         'Accept': 'application/json'
@@ -46,16 +47,48 @@ function Searchbar () {
     let searchedResults = [...data.results]
     searchedResults.forEach(element => {
       element['checked'] = false;
-      
+      console.log('in God we trust',searchedResults);
     });
     setSearchResults(searchedResults);
-    console.log('in God we trust',searchedResults);
+    // console.log('in God we trust',searchedResults);
 
   } 
     function toggleButton(){
       setSearchButton(true);
       setShow(true);
     }
+
+    {/* export Button*/}
+
+    function exportTwoWord() { 
+      let html, link, blob, url, css;
+
+      css = (
+        '<style>' +
+        '@page WordSection1{size: 841.95pt 595.35pt;mso-page-orientation: landscape;}' +
+        'div.WordSection1 {page: WordSection1;}' +
+        '</style>'
+      );
+
+      html = document.querySelector("#table").innerHTML;
+      // html.forEach()
+      for (let i = 0; i < html.length; i++) {
+       const item = html[i];
+       console.log(item);
+      }
+      // console.log(html);
+      blob = new Blob(['\ufeff', html], {
+        type: 'application/msword'
+      });
+      url = URL.createObjectURL(blob);
+      link = document.createElement('A');
+      link.href = url;
+      link.download = 'Document';
+      document.body.appendChild(link);
+      if (navigator.msSaveOrOpenBlob) navigator.msSaveOrOpenBlob( blob, 'Document.doc');
+      else link.click();
+      document.body.removeChild(link);
+    };
 
     const handleClick = (event) => {
         swal({
@@ -123,9 +156,7 @@ function Searchbar () {
        </div>
        
        <div className={styles.searchButton}>
-         <Pdf target={ref} filename="anwsers.pdf">
-          {({ toPdf }) => <button type="button" name="exportBtn"  className={styles.buttonType} id={styles.exportButton} onClick={toPdf}>Export</button>}
-        </Pdf>
+        <button type="button" name="exportBtn"  className={styles.buttonType} id={styles.exportButton} onClick={exportTwoWord}>Export</button>
        </div>
        </div>
 
@@ -133,15 +164,15 @@ function Searchbar () {
         display: show?"block":"none"
       }}>
 
-
-<Table responsive="xl" className="p-2 mt-5 TableData" ref={ref}>
+      <div id="table">
+      <Table responsive="xl" className="p-2 mt-5 TableData">
         <tbody>
           <tr className="mt-2">
            
             <td> <input type="checkbox" className="form-check-input ms-1" id="exampleCheck1"/></td>
             <td>
-            <span>Environment/Owener Pauline</span>
-              <p className="text-secondary">The Integrated Lake Albert Resource Development Project, including the Tilenga development and the EACOP pipeline, is a project consistent with this strategy of low-dead-end projects that are the most efficient in terms of greenhouse gas emissions. In particular, the greenhouse gas emissions intensity of this project is 13 kgCO2/boe, i.e. less than 1 MtCO2eq/year at the plateau (Scope 1 + 2), corresponding to a level much lower than the current average of TotalEnergies oil production which is of the order of 19 kgCO2/bep. </p>
+            <span className="text-secondary" id="table">Environment/Owener Pauline</span>
+              <p className="text-secondary" id="table">The Integrated Lake Albert Resource Development Project, including the Tilenga development and the EACOP pipeline, is a project consistent with this strategy of low-dead-end projects that are the most efficient in terms of greenhouse gas emissions. In particular, the greenhouse gas emissions intensity of this project is 13 kgCO2/boe, i.e. less than 1 MtCO2eq/year at the plateau (Scope 1 + 2), corresponding to a level much lower than the current average of TotalEnergies oil production which is of the order of 19 kgCO2/bep. </p>
            </td>
            
           </tr>
@@ -149,21 +180,23 @@ function Searchbar () {
           <tr className="mt-2">
             <td><input type="checkbox" className="form-check-input ms-1" id="exampleCheck1"/></td>
             <td>
-            <span>Financing/Owener Fabien</span>
-              <p className="text-secondary">The integrated project to develop the Lake Albert resources, which consists of the Tilenga development and the EACOP pipeline, is consistent with our strategy to focus on projects with both a low breakeven point and low greenhouse gas footprint. This projects GHG emissions intensity comes to 13 kg CO2/boe, which is well below the current average of our oil portfolio of around 20 kg/boe.</p>
+            <span className="text-secondary" id="table">Financing/Owener Fabien</span>
+              <p className="text-secondary" id="table">The integrated project to develop the Lake Albert resources, which consists of the Tilenga development and the EACOP pipeline, is consistent with our strategy to focus on projects with both a low breakeven point and low greenhouse gas footprint. This projects GHG emissions intensity comes to 13 kg CO2/boe, which is well below the current average of our oil portfolio of around 20 kg/boe.</p>
            </td>
            
           </tr>
           <tr className="mt-2">
             <td><input type="checkbox" className="form-check-input ms-1" id="exampleCheck1"/></td>
             <td>
-            <span>Security/Owener Jean Michel</span>
-              <p className="text-secondary">To-date - 10,000 people in the Tilenga footprint area, have been held over 3 years, to explain the land acquisition process and ensure that all interested and affected parties are informed and involved throughout the process.</p>
+            <span className="text-secondary" id="table">Security/Owener Jean Michel</span>
+              <p className="text-secondary" id="table">To-date - 10,000 people in the Tilenga footprint area, have been held over 3 years, to explain the land acquisition process and ensure that all interested and affected parties are informed and involved throughout the process.</p>
           </td>
            
           </tr>
         </tbody>
-      </Table>
+        </Table>
+        </div>
+        
 
      
         {/* <Table data={searchResults} /> */}
