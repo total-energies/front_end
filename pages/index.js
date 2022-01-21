@@ -7,6 +7,16 @@ import React, { useEffect } from "react";
 
 
 
+// export async function getServerSideProps(context) {
+//   const res = await fetch('https://rickandmortyapi.com/api/character')
+//   const answersResults = await res.json();
+//   return {
+//     props: { 
+//       answersResults
+//     },
+//   }
+// }
+
 
 export default function HomePage() {
 

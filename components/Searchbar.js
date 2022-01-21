@@ -8,35 +8,82 @@ import axios from "axios";
 
  
 
-function Searchbar () {
-    const [show, setShow] = useState(false);
-    const [APIData, setAPIData] = useState([]);
-    const [filteredResults, setFilteredResults] = useState([]);
-    const [searchInput, setsearchInput] = useState('');
 
-  const url = '';
-    useEffect(() => {
-      axios.get(url)
-      .then((response) => {
-        console.log(response);
-        setAPIData(response.data);
+
+ 
+
+function Searchbar ({data}) {
+  const [show, setShow] = useState(false);
+  const [disable, setSearchButton] = useState(false);
+  const [searchResults, setSearchResults] = useState([]);
+  const [formInput, setFormInputs] = useState({});
+  const [searchTerm, setSearchTerm] = useState('');
+    // const [APIData, setAPIData] = useState([]);
+    // const [filteredResults, setFilteredResults] = useState([]);
+    // const [searchInput, setsearchInput] = useState('');
+
+  // const url = '';
+  //   useEffect(() => {
+  //     axios.get(url)
+  //     .then((response) => {
+  //       console.log(response);
+  //       setAPIData(response.data);
         
-      })
-    }, [])
+  //     })
+  //   }, [])
 
 
-    const searchItems = (searchValue) => {
-      setsearchInput(searchValue)
-      if(searchInput !== ''){
-        const filteredData = APIData.filter((item) => {
-          return Object.values(item).join('').toLowerCase().includes(searchInput.toLowerCase())
-        })
-        setFilteredResults(filteredData);
-      }
-      else {
-        setFilteredResults(APIData)
-      }
+  //   const searchItems = (searchValue) => {
+  //     setsearchInput(searchValue)
+  //     if(searchInput !== ''){
+  //       const filteredData = APIData.filter((item) => {
+  //         return Object.values(item).join('').toLowerCase().includes(searchInput.toLowerCase())
+  //       })
+  //       setFilteredResults(filteredData);
+  //     }
+  //     else {
+  //       setFilteredResults(APIData)
+  //     }
+  //   }
+
+
+  const handleInputs = (event) => {
+    setShow(false);
+    setSearchButton(false);
+    let {name, value} = event.target
+    setFormInputs({...formInput, [name]: value});
+    setSearchTerm(event.target.value);
+  }
+
+
+  const handleEnterKey =(event) => {
+    if (event.key === 'Enter') {
+      toggleButton();
+
     }
+
+  }
+
+
+  const search = async (event) => {
+    event.preventDefault();
+    let data = await fetch('', {
+      headers: {
+        'Content-type': 'application/json',
+        'Accept': 'application/json'
+      }
+    });
+    data = await data.json();
+    console.log(data)
+    let searchedResults = [...data.results]
+    searchedResults.forEach(element => {
+      element['checked'] = false;
+      
+    });
+    setSearchResults(searchedResults);
+    console.log('in God we trust',searchedResults);
+
+  } 
 
 
 
@@ -47,7 +94,8 @@ function Searchbar () {
     }
 
     function toggleButton(){
-      setShow(!show);
+      setSearchButton(true);
+      setShow(true);
     }
 
     const handleClick = (event) => {
@@ -100,14 +148,15 @@ function Searchbar () {
   </div>
 </div>
         <div className={styles.container}>
-       <Form id={styles.form} role="search" >
+       <Form id={styles.form} role="search" onSubmit={search}>
         <div className={styles.parentForm}>
         <div>  
-       <input type='search' id={styles.query} name="" className={styles.inputType} placeholder="Enter a Question" onChange={(e) => searchItems(e.target.value)}>
+       <input type='text' required id={styles.query} name="searchTerm" value={searchTerm} className={styles.inputType}  placeholder="Enter a Question"
+        onChange={(handleInputs)} onKeyPress ={(handleEnterKey)}>
        </input>
        </div>
        <div className={styles.searchButton}>
-        <button type="button"  className={styles.buttonType} onClick={toggle}>Search</button>
+        <button type="query"  className={styles.buttonType} onClick={toggleButton} disabled={disable}>Search</button>
        </div>
 
        <div className={styles.addButton} >
@@ -132,6 +181,5 @@ function Searchbar () {
     );
 
 }
-
 
 export default Searchbar
