@@ -111,6 +111,24 @@
     background-color: #F9110C;
 }
 
+#paginationText{
+    color:#00BFA6;
+}
+
+#paginationText:hover{
+    background-color: #00BFA6;
+    color:#ffffff;
+}
+
+#paginationText:active{
+    background-color: #00BFA6;
+}
+#activeText{
+    background-color: #00BFA6; 
+    color:#ffffff;
+    border: 1px solid #00BFA6; 
+}
+
 /* .container{
     padding:20px;
 } */
