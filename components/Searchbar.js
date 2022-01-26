@@ -1,8 +1,8 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useState,useEffect } from "react";
 import { Form } from "react-bootstrap";
 import styles from '../styles/Searchbar.module.css';
 import { Table } from "react-bootstrap";
-import axios from "axios";
+// import axios from "axios";
 //import Pdf from "react-to-pdf";
 
  //import Table from '../components/SearchTable';
@@ -23,7 +23,7 @@ function Searchbar () {
     let {name, value} = event.target
     setFormInputs({...formInput, [name]: value});
     setSearchTerm(event.target.value);
-    console.log(setSearchTerm)
+    // console.log(searchTerm)
   }
 
   const handleEnterKey =(event) => {
@@ -35,24 +35,24 @@ function Searchbar () {
   }
 
   const search = async (event) => {
-    event.preventDefault();
-    let data = await axios.get('https://te-searchengine.herokuapp.com/api/v1/answers/search?search=tilenga', {
-      headers: {
-        'Content-type': 'application/json',
-        'Accept': 'application/json'
-      }
-    });
+    // event.preventDefault();
+    let data = await fetch('')
     data = await data.json();
-    console.log(data)
-    let searchedResults = [...data.results]
-    searchedResults.forEach(element => {
-      element['checked'] = false;
-      console.log('in God we trust',searchedResults);
-    });
-    setSearchResults(searchedResults);
+    console.log(data.results);
+    // let searchedResults = [...data.results]
+    // searchedResults.forEach(element => {
+    //   element['checked'] = false;
+    //   console.log('in God we trust',searchedResults);
+    // });
+    setSearchResults(data.results);
     // console.log('in God we trust',searchedResults);
 
   } 
+
+  useEffect(() => {
+    search;
+  },[])
+
     function toggleButton(){
       setSearchButton(true);
       setShow(true);
@@ -140,7 +140,7 @@ function Searchbar () {
   </div>
 </div>
         <div className={styles.container}>
-       <Form id={styles.form} role="search" onSubmit={search}>
+       <Form id={styles.form} role="search" onSubmit={search()}>
         <div className={styles.parentForm}>
         <div>  
        <input type='text' required id={styles.query} name="searchTerm" value={searchTerm} className={styles.inputType}  placeholder="Enter a Question"
