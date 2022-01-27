@@ -163,7 +163,7 @@ function Searchbar () {
        <div className="table mt-5" id={styles.TableID}  style={{
         display: show?"block":"none"
       }}>
-
+      
       <div id="table">
       <Table responsive="xl" className="p-2 mt-5 TableData">
         <tbody>
