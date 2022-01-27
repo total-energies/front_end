@@ -20,6 +20,7 @@ function Searchbar () {
   const [searchResults, setSearchResults] = useState([]);
   const [formInput, setFormInputs] = useState({});
   const [searchTerm, setSearchTerm] = useState('');
+  console.log('why are you empty',searchResults);
   //   const [APIData, setAPIData] = useState([]);
   //   const [filteredResults, setFilteredResults] = useState([]);
   //   const [searchInput, setsearchInput] = useState('');
@@ -72,17 +73,27 @@ function Searchbar () {
 
   const search = async (event) => {
    //event.preventDefault();
-    let data = await fetch(`http://localhost:3000/items/?q=${formInput.searchTerm}`);
+   let search = formInput.searchTerm === undefined ? '0' : formInput.searchTerm;
+   console.log('the search team',search);
+    let data = await fetch(`http://localhost:3000/?q=${search}`);
     data = await data.json();
-    console.log(data)
-    setSearchResults(data.items);
-    console.log('in God we trust',data);
+     console.log(data)
+     console.log(data.items)
+    setSearchResults(data);
+    console.log(typeof data);
+
+    let searchedResults = Object.values(data)
+    console.log(searchedResults);
+    console.log(typeof searchedResults);
+  //  console.log('in God we trust',searchResults);
+  //  console.log(typeof searchResults);
+
 
   } 
 
-  useEffect(() => {
-    search
-  },[])
+  // useEffect(() => {
+  //   setSearchResults();
+  // },[setSearchResults])
 
 
 
@@ -172,18 +183,25 @@ function Searchbar () {
        <div className="table mt-5" id={styles.TableID}  style={{
         display: show?"block":"none"
       }}>
+{/* 
+        {searchResults.map((each , index) => {
+          return 
+            <Table 
+            index={each.id}
+            theme={each.theme.name}
+            owner={each.owner.name}
+            answer={each.answer}
+            />
+        })} */}
+        {console.log('thehabrejh',searchResults)};
 
-      {/* {searchResults.map(each, index) => {
-        return (
-          <Table 
-          index={each.id}
-          theme={each.theme.name}
-          owner={each.owner.name}
-          answer={each.answer}
-
-        />
-        )
-      }} */}
+        {console.log(typeof searchResults)};
+        {/* {let searchedResults2 = Object.values(data)} */}
+        {/* { console.log(searchedResults)}
+        {console.log(typeof searchedResults)} */}
+<Table data={searchResults}
+/>
+    
         
     
 

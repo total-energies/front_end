@@ -1,41 +1,18 @@
 import { Table } from "react-bootstrap";
 import styles from '../styles/Table.module.css';
 
-function  SearchTable({index, answer, owner, theme}){
+function  SearchTable(data){
+
+  console.log(data);
+  console.log(typeof data);
+
 
     return(
       
-    <div key={index}>
+    <div>
 
-<Table responsive="xl" className="p-2 mt-5 TableData">
-        <tbody>
-          <tr className="mt-2">
-           
-            <td> <input type="checkbox" className="form-check-input ms-1" id="exampleCheck1"/></td>
-            <td>
-            <span>{theme}/{owner}</span>
-              <p className="text-secondary">{answer} </p>
-           </td>
-           
-          </tr>
-          
-          <tr className="mt-2">
-            <td><input type="checkbox" className="form-check-input ms-1" id="exampleCheck1"/></td>
-            <td>
-            <span>{theme}/{owner}</span>
-              <p className="text-secondary">{answer}</p>
-           </td>
-           
-          </tr>
-          <tr className="mt-2">
-            <td><input type="checkbox" className="form-check-input ms-1" id="exampleCheck1"/></td>
-            <td>
-            <span>{theme}/{owner}</span>
-              <p className="text-secondary">{answer}</p> 
-          </td>
-           
-          </tr>
-        </tbody>
+<Table responsive="xl" className="p-2 mt-5 TableData" >
+
       </Table>
 
       <div className="w-100">
