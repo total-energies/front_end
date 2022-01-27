@@ -3,6 +3,7 @@ import { Form } from "react-bootstrap";
 import styles from '../styles/Searchbar.module.css';
 import { Table } from "react-bootstrap";
 import axios from "axios";
+
 //import Pdf from "react-to-pdf";
 
  //import Table from '../components/SearchTable';
@@ -36,7 +37,7 @@ function Searchbar () {
 
   const search = async (event) => {
     event.preventDefault();
-    let data = await axios.get('https://te-searchengine.herokuapp.com/api/v1/answers/search?search=tilenga', {
+    let data = await axios.get('http://localhost:8080', {
       headers: {
         'Content-type': 'application/json',
         'Accept': 'application/json'
