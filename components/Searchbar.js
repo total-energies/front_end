@@ -3,6 +3,7 @@ import { Form } from "react-bootstrap";
 import styles from '../styles/Searchbar.module.css';
 import axios from "axios";
 
+
  import Table from '../components/SearchTable';
 
 
@@ -12,17 +13,18 @@ import axios from "axios";
 
  
 
-function Searchbar ({data}) {
+function Searchbar () {
+  // const [data, setData] = useState([]);
   const [show, setShow] = useState(false);
   const [disable, setSearchButton] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
   const [formInput, setFormInputs] = useState({});
   const [searchTerm, setSearchTerm] = useState('');
-    // const [APIData, setAPIData] = useState([]);
-    // const [filteredResults, setFilteredResults] = useState([]);
-    // const [searchInput, setsearchInput] = useState('');
+  //   const [APIData, setAPIData] = useState([]);
+  //   const [filteredResults, setFilteredResults] = useState([]);
+  //   const [searchInput, setsearchInput] = useState('');
 
-  // const url = '';
+  // const url = 'http://localhost:3000/items';
   //   useEffect(() => {
   //     axios.get(url)
   //     .then((response) => {
@@ -52,6 +54,7 @@ function Searchbar ({data}) {
     setSearchButton(false);
     let {name, value} = event.target
     setFormInputs({...formInput, [name]: value});
+    console.log('the input should be here',formInput)
     setSearchTerm(event.target.value);
   }
 
@@ -59,6 +62,8 @@ function Searchbar ({data}) {
   const handleEnterKey =(event) => {
     if (event.key === 'Enter') {
       toggleButton();
+      search();
+      
 
     }
 
@@ -66,24 +71,18 @@ function Searchbar ({data}) {
 
 
   const search = async (event) => {
-    event.preventDefault();
-    let data = await fetch('', {
-      headers: {
-        'Content-type': 'application/json',
-        'Accept': 'application/json'
-      }
-    });
+   //event.preventDefault();
+    let data = await fetch(`http://localhost:3000/items/?q=${formInput.searchTerm}`);
     data = await data.json();
     console.log(data)
-    let searchedResults = [...data.results]
-    searchedResults.forEach(element => {
-      element['checked'] = false;
-      
-    });
-    setSearchResults(searchedResults);
-    console.log('in God we trust',searchedResults);
+    setSearchResults(data.items);
+    console.log('in God we trust',data);
 
   } 
+
+  useEffect(() => {
+    search
+  },[])
 
 
 
@@ -96,6 +95,7 @@ function Searchbar ({data}) {
     function toggleButton(){
       setSearchButton(true);
       setShow(true);
+      search();
     }
 
     const handleClick = (event) => {
@@ -111,8 +111,9 @@ function Searchbar ({data}) {
      
 
     return (
-
+     
       <>
+     
       {/* Modal */}
 <div className="modal fade " id="exampleModal"  aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div  className="modal-dialog ">
@@ -172,8 +173,18 @@ function Searchbar ({data}) {
         display: show?"block":"none"
       }}>
 
-     
-        <Table data={searchResults} />
+      {/* {searchResults.map(each, index) => {
+        return (
+          <Table 
+          index={each.id}
+          theme={each.theme.name}
+          owner={each.owner.name}
+          answer={each.answer}
+
+        />
+        )
+      }} */}
+        
     
 
       

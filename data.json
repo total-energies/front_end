@@ -1,4 +1,4 @@
-export default data = [{
+  {
     "items": [
     {
     "id": "31056865-2c8d-4b64-acf8-2dec7dddf0d0",
@@ -314,4 +314,4 @@ export default data = [{
     "searchDuration": "2.075 seconds"
     }
     }
-  ]
+  
