@@ -4,7 +4,7 @@ import styles from '../styles/Sidebar.module.css';
 import Image from "next/image";
 import avatar from '../public/avatar-gfa56b2cea_1280.png';
 import logOut from '../public/logout.png'; 
-import Swal from 'sweetalert2';
+
 
 
 
